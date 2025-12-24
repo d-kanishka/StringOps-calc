@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scientific Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="calculator">
+        <div class="mode-indicator">
+            <span class="mode-text" id="modeText">DEG</span>
+            <button class="toggle-btn" id="toggleBtn" onclick="toggleMode()">String</button>
+        </div>
+
+        <!-- calc -->
+        <div id="calcMode">
+            <div class="display">
+                <div class="input-line" id="inputDisplay"></div>
+                <div class="result-line" id="resultDisplay">0</div>
+            </div>
+            <div class="buttons">
+                <button onclick="handleButton('(')">(</button>
+                <button onclick="handleButton(')')">)</button>
+                <button onclick="handleButton('mc')">mc</button>
+                <button onclick="handleButton('m+')">m+</button>
+                <button onclick="handleButton('m-')">m-</button>
+                <button onclick="handleButton('mr')">mr</button>
+                <button class="function" onclick="handleButton('AC')">AC</button>
+                <button class="function" onclick="handleButton('DEL')">DEL</button>
+                <button class="function" onclick="handleButton('%')">%</button>
+                <button class="operator" onclick="handleButton('÷')">÷</button>
+
+                <button id="secondBtn" onclick="handleButton('2nd')">2nd</button>
+                <button onclick="handleButton('x²')">x²</button>
+                <button onclick="handleButton('x³')">x³</button>
+                <button onclick="handleButton('xʸ')">xʸ</button>
+                <button id="expBtn" onclick="handleButton('eˣ')">eˣ</button>
+                <button id="powerBtn" onclick="handleButton('10ˣ')">10ˣ</button>
+                <button onclick="handleButton('7')">7</button>
+                <button onclick="handleButton('8')">8</button>
+                <button onclick="handleButton('9')">9</button>
+                <button class="operator" onclick="handleButton('×')">×</button>
+
+                <button onclick="handleButton('1/x')">1/x</button>
+                <button onclick="handleButton('√')">√</button>
+                <button onclick="handleButton('∛')">∛</button>
+                <button onclick="handleButton('ʸ√x')">ʸ√x</button>
+                <button id="lnBtn" onclick="handleButton('ln')">ln</button>
+                <button id="logBtn" onclick="handleButton('log')">log</button>
+                <button onclick="handleButton('4')">4</button>
+                <button onclick="handleButton('5')">5</button>
+                <button onclick="handleButton('6')">6</button>
+                <button class="operator" onclick="handleButton('-')">-</button>
+
+                <button onclick="handleButton('x!')">x!</button>
+                <button id="sinBtn" onclick="handleButton('sin')">sin</button>
+                <button id="cosBtn" onclick="handleButton('cos')">cos</button>
+                <button id="tanBtn" onclick="handleButton('tan')">tan</button>
+                <button onclick="handleButton('e')">e</button>
+                <button onclick="handleButton('EE')">EE</button>
+                <button onclick="handleButton('1')">1</button>
+                <button onclick="handleButton('2')">2</button>
+                <button onclick="handleButton('3')">3</button>
+                <button class="operator" onclick="handleButton('+')">+</button>
+
+                <button onclick="handleButton('Rand')">Rand</button>
+                <button id="sinhBtn" onclick="handleButton('sinh')">sinh</button>
+                <button id="coshBtn" onclick="handleButton('cosh')">cosh</button>
+                <button id="tanhBtn" onclick="handleButton('tanh')">tanh</button>
+                <button onclick="handleButton('π')">π</button>
+                <button id="radDegBtn" onclick="handleButton('Rad')">Rad</button>
+                <button class="function" onclick="handleButton('+/-')">+/-</button>
+                <button onclick="handleButton('0')">0</button>
+                <button onclick="handleButton('.')">.</button>
+                <button class="operator" onclick="handleButton('=')">=</button>
+            </div>
+        </div>
+
+        <!-- string -->
+        <div class="string-container" id="stringMode">
+            <div class="string-section">
+                <label class="string-label">Enter String 1</label>
+                <input type="text" class="string-input" id="string1" placeholder="Enter your string...">
+            </div>
+
+            <button class="add-string-btn" onclick="toggleString2()">
+                <span id="addStringText">+ Add String 2</span>
+            </button>
+
+            <div class="string-section" id="string2Section" style="display: none;">
+                <input type="text" class="string-input" id="string2" placeholder="Enter second string...">
+            </div>
+
+            <div class="string-params">
+                <div class="param-group">
+                    <label class="param-label">Start Index</label>
+                    <input type="text" class="param-input" id="startIndex" placeholder="0" value="0">
+                </div>
+                <div class="param-group">
+                    <label class="param-label">End Index</label>
+                    <input type="text" class="param-input" id="endIndex" placeholder="Length">
+                </div>
+                <div class="param-group">
+                    <label class="param-label">Find</label>
+                    <input type="text" class="param-input" id="findText" placeholder="Text to find">
+                </div>
+                <div class="param-group">
+                    <label class="param-label">Replace With</label>
+                    <input type="text" class="param-input" id="replaceText" placeholder="Replacement">
+                </div>
+            </div>
+
+            <div class="string-section">
+                <label class="string-label">Result</label>
+                <div class="string-result" id="stringResult"></div>
+            </div>
+
+            <div class="string-buttons">
+                <button class="string-op-btn" onclick="stringOp('cat')">CAT</button>
+                <button class="string-op-btn" onclick="stringOp('cat+')">CAT+</button>
+                <button class="string-op-btn" onclick="stringOp('lower')">lower</button>
+                <button class="string-op-btn" onclick="stringOp('upper')">UPPER</button>
+                <button class="string-op-btn" onclick="stringOp('length')">Length</button>
+                <button class="string-op-btn" onclick="stringOp('reverse')">Reverse</button>
+                <button class="string-op-btn" onclick="stringOp('anagram')">Anagram</button>
+                <button class="string-op-btn" onclick="stringOp('substring')">Substring</button>
+                <button class="string-op-btn" onclick="stringOp('replace')">Replace</button>
+                <button class="string-op-btn" onclick="stringOp('clear')">Clear</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,287 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.calculator {
+    background: #1a1a1a;
+    border-radius: 24px;
+    padding: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    width: 100%;
+    max-width: 550px;
+    border: 2px solid #2a2a2a;
+}
+
+.mode-indicator {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.mode-text {
+    color: #999;
+    font-size: 11px;
+    font-weight: 500;
+}
+
+.toggle-btn {
+    background: transparent;
+    color: #ff9500;
+    border: 1.5px solid #ff9500;
+    border-radius: 999px;      
+    padding: 2px 10px;         
+    font-size: 11px;          
+    font-weight: 600;
+    cursor: pointer;
+    line-height: 1;
+    height: 24px; 
+    width: 50px;           
+}
+
+
+.toggle-btn:hover {
+    background: #ff9500;
+    color: #000;
+}
+
+.display {
+    background: #2a2a2a;
+    border-radius: 14px;
+    padding: 14px 16px;
+    margin-bottom: 14px;
+    text-align: right;
+}
+
+
+.input-line {
+    color: #999;
+    font-size: 16px;
+    min-height: 22px;
+    word-wrap: break-word;
+    word-break: break-all;
+    margin-bottom: 8px;
+}
+
+.result-line {
+    color: white;
+    font-size: 34px;
+    font-weight: 300;
+}
+
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 8px;
+}
+
+button {
+    background: #3a3a3a;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 100%;
+    aspect-ratio: 1;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+button:hover {
+    background: #4a4a4a;
+    transform: scale(1.05);
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+button.function {
+    background: #505050;
+}
+
+button.operator {
+    background: #ff9500;
+}
+
+button.operator:hover {
+    background: #ffaa33;
+}
+
+button.second-mode {
+    background: white;
+    color: black;
+}
+
+/* string */
+.string-container {
+    display: none;
+}
+
+.string-container.active {
+    display: block;
+}
+
+.string-section {
+    margin-bottom: 16px;
+}
+
+.string-label {
+    color: #999;
+    font-size: 12px;
+    margin-bottom: 6px;
+    display: block;
+}
+
+.string-input {
+    width: 100%;
+    background: #2a2a2a;
+    border: 1px solid #444;
+    border-radius: 10px;
+    padding: 12px;
+    color: white;
+    font-size: 14px;
+}
+
+.string-input:focus {
+    outline: none;
+    border-color: #ff9500;
+}
+
+.string-input::placeholder {
+    color: #666;
+}
+
+.add-string-btn {
+    width: 100%;
+    background: transparent;
+    border: 2px dashed #555;
+    border-radius: 10px;
+    padding: 12px;
+    color: #999;
+    font-size: 13px;
+    cursor: pointer;
+    margin-bottom: 16px;
+    transition: all 0.2s;
+    height: 30px;
+}
+
+.add-string-btn:hover {
+    border-color: #864040;
+    color: #bbb;
+}
+
+.string-params {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.param-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.param-label {
+    color: #999;
+    font-size: 11px;
+    margin-bottom: 6px;
+}
+
+.param-input {
+    background: #2a2a2a;
+    border: 1px solid #444;
+    border-radius: 8px;
+    padding: 10px;
+    color: white;
+    font-size: 13px;
+}
+
+.param-input:focus {
+    outline: none;
+    border-color: #ff9500;
+}
+
+.param-input::placeholder {
+    color: #666;
+}
+
+.string-result {
+    background: #2a2a2a;
+    border-radius: 12px;
+    padding: 20px;
+    color: white;
+    font-size: 18px;
+    min-height: 80px;
+    word-wrap: break-word;
+    display: flex;
+    align-items: center;
+}
+
+.string-buttons {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+}
+
+.string-op-btn {
+    background: #3a3a3a;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    padding: 16px 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    height:50px;
+}
+
+.string-op-btn:hover {
+    background: #4a4a4a;
+    transform: translateY(-2px);
+}
+
+.string-op-btn:active {
+    transform: translateY(0);
+}
+
+@media (max-width: 600px) {
+    .buttons {
+        gap: 6px;
+    }
+
+    button {
+        font-size: 13px;
+    }
+
+    .result-line {
+        font-size: 36px;
+    }
+
+    .string-params {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .string-buttons {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
